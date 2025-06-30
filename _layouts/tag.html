@@ -1,0 +1,37 @@
+---
+layout: default
+---
+
+<div style="padding-left: 1.5rem;">
+<h1>{{ page.tag }}</h1>
+</div>
+<div class="posts">
+{% for post in site.posts %}
+  {% if post.tags contains page.tag %}
+  <!-- Posts with photos -->
+  {% if post.thumbnail %}
+  <a class="post photo" href="{{ post.url | relative_url }}" style="
+    max-width:{{ post.image_width | default: 400 }};
+    max-height:{{ post.image_height | default: 400 }};
+    width:calc({{ post.image_width | default: 400 }}px*{{ site.thumbnail_size | default: 400 }}/{{ post.image_height | default: 400 }});
+    flex-grow:calc({{ post.image_width | default: 400 }}*{{ site.thumbnail_size | default: 400 }}/{{ post.image_height | default: 400 }})">
+    <i style="padding-bottom:{{ post.image_ratio | default: '100%' }}"></i>
+    <img src="{{ post.thumbnail | relative_url }}" class="pre-loaded" onload="this.className+=' loaded';" />
+    <noscript>  
+    <img src="{{ post.thumbnail | relative_url }}">
+    </noscript>
+    {% if site.show_title %}
+    <span class="title">{{ post.title }}</span>
+    {% endif %}
+  </a>
+  {% else %}
+  
+  <!-- Posts without photos -->
+  <a class="post text" href="{{ post.url | relative_url }}" style="flex-grow:{{ site.thumbnail_size | default: 400 }}">
+    <span class="title">{{ post.title }}</span>
+    <span class="date">{{ post.date | date: "%B %d, %Y" }}</span>
+  </a>
+  {% endif %}
+  {% endif %}
+  {% endfor %}
+</div>

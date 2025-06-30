@@ -1,0 +1,348 @@
+---
+layout: default
+title: "Browse by Color"
+permalink: /by-color/
+---
+
+<div style="padding: 1.5rem;">
+  <h1>Browse by Color</h1>
+  <p>Click any color to see posts featuring that color in their palette.</p>
+  
+  <!-- Collect all unique colors -->
+  {% assign all_colors = "" | split: "" %}
+  {% for post in site.posts %}
+    {% if post.colors %}
+      {% for color in post.colors %}
+        {% unless all_colors contains color %}
+          {% assign all_colors = all_colors | push: color %}
+        {% endunless %}
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+  
+  <!-- Sort options -->
+  <div style="margin: 1rem 0; display: flex; gap: 1rem; flex-wrap: wrap;"> 
+    <button id="btn-hue" onclick="sortByHue()" style="padding: 0.5rem 1rem; border: 1px solid #ccc; background: white; cursor: pointer; transition: all 0.2s ease;">Sort by Hue</button>
+    <button id="btn-brightness" onclick="sortByBrightness()" style="padding: 0.5rem 1rem; border: 1px solid #ccc; background: white; cursor: pointer; transition: all 0.2s ease;">Sort by Brightness</button>
+    <button id="btn-alphabetical" onclick="sortAlphabetically()" style="padding: 0.5rem 1rem; border: 1px solid #ccc; background: white; cursor: pointer; transition: all 0.2s ease;">Sort Alphabetically</button>    
+    <button id="btn-group" onclick="groupSimilarColors()" style="padding: 0.5rem 1rem; border: 1px solid #ccc; background: white; cursor: pointer; transition: all 0.2s ease;">Group Similar Colors</button>
+  </div>
+  
+  <!-- Display color grid -->
+  <div id="color-grid" class="color-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 10px; margin-top: 2rem;">
+    {% for color in all_colors %}
+      <a href="/color/{{ color }}" class="color-swatch" data-color="{{ color }}" style="
+        width: 100px; 
+        height: 100px; 
+        background-color: #{{ color }}; 
+        display: block; 
+        text-decoration: none;
+        border: 0px solid rgba(0,0,0,0.1);
+        transition: all 0.2s ease;
+        position: relative;
+      " 
+      onmouseover="this.style.transform='scale(1.05)'" 
+      onmouseout="this.style.transform='scale(1)'">
+        <!-- Show hex code on hover -->
+        <span class="color-info" style="
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: rgba(0,0,0,0.8);
+          color: white;
+          font-size: 10px;
+          text-align: center;
+          padding: 2px;
+          opacity: 0;
+          transition: opacity 0.2s ease;
+        " 
+        onmouseover="this.style.opacity='1'" 
+        onmouseout="this.style.opacity='0'">
+          #{{ color }}
+        </span>
+      </a>
+    {% endfor %}
+  </div>
+  
+  <script>
+// Store original swatches to restore normal sorting
+let originalSwatches = [];
+let currentSortMethod = 'hue'; // Track current sort method
+
+// Initialize original swatches on page load
+document.addEventListener('DOMContentLoaded', function() {
+  const grid = document.getElementById('color-grid');
+  originalSwatches = Array.from(grid.children).map(swatch => swatch.cloneNode(true));
+  sortByHue();
+});
+
+// Button state management
+function setActiveButton(activeButtonId) {
+  // Reset all buttons
+  const buttons = ['btn-group', 'btn-hue', 'btn-brightness', 'btn-alphabetical'];
+  buttons.forEach(buttonId => {
+    const button = document.getElementById(buttonId);
+    button.style.background = 'white';
+    button.style.borderColor = '#ccc';
+    button.style.color = '#333';
+    button.style.fontWeight = 'normal';
+  });
+  
+  // Set active button
+  const activeButton = document.getElementById(activeButtonId);
+  activeButton.style.background = '#0066cc';
+  activeButton.style.borderColor = '#0066cc';
+  activeButton.style.color = 'white';
+  activeButton.style.fontWeight = 'bold';
+  
+  // Update current sort method
+  currentSortMethod = activeButtonId.replace('btn-', '');
+}
+
+// Color sorting functions
+function hexToHsl(hex) {
+  const r = parseInt(hex.slice(0, 2), 16) / 255;
+  const g = parseInt(hex.slice(2, 4), 16) / 255;
+  const b = parseInt(hex.slice(4, 6), 16) / 255;
+  
+  const max = Math.max(r, g, b);
+  const min = Math.min(r, g, b);
+  let h, s, l = (max + min) / 2;
+  
+  if (max === min) {
+    h = s = 0; // achromatic
+  } else {
+    const d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch (max) {
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+    h /= 6;
+  }
+  
+  return [h * 360, s * 100, l * 100];
+}
+
+function getBrightness(hex) {
+  const r = parseInt(hex.slice(0, 2), 16);
+  const g = parseInt(hex.slice(2, 4), 16);
+  const b = parseInt(hex.slice(4, 6), 16);
+  return (r * 299 + g * 587 + b * 114) / 1000;
+}
+
+// Reset to original swatches before sorting
+function resetToOriginalSwatches() {
+  const grid = document.getElementById('color-grid');
+  grid.innerHTML = '';
+  
+  // Clone original swatches to avoid reference issues
+  const swatches = originalSwatches.map(swatch => {
+    const clone = swatch.cloneNode(true);
+    // Reset any styling that might have been applied
+    clone.style.border = '1px solid rgba(0,0,0,0.1)';
+    clone.style.borderRadius = '0';
+    return clone;
+  });
+  
+  swatches.forEach(swatch => grid.appendChild(swatch));
+  return swatches;
+}
+
+function sortColors(sortFunction) {
+  const swatches = resetToOriginalSwatches();
+  swatches.sort(sortFunction);
+  
+  const grid = document.getElementById('color-grid');
+  grid.innerHTML = '';
+  swatches.forEach(swatch => grid.appendChild(swatch));
+}
+
+function sortByHue() {
+  setActiveButton('btn-hue');
+  sortColors((a, b) => {
+    const hslA = hexToHsl(a.dataset.color);
+    const hslB = hexToHsl(b.dataset.color);
+    return hslA[0] - hslB[0];
+  });
+}
+
+function sortByBrightness() {
+  setActiveButton('btn-brightness');
+  sortColors((a, b) => {
+    const brightnessA = getBrightness(a.dataset.color);
+    const brightnessB = getBrightness(b.dataset.color);
+    return brightnessB - brightnessA; // Bright to dark
+  });
+}
+
+function sortAlphabetically() {
+  setActiveButton('btn-alphabetical');
+  sortColors((a, b) => {
+    return a.dataset.color.localeCompare(b.dataset.color);
+  });
+}
+
+// Enhanced groupSimilarColors function
+function groupSimilarColors() {
+  setActiveButton('btn-group');
+  const swatches = resetToOriginalSwatches();
+  const grid = document.getElementById('color-grid');
+  
+  // Group colors by similarity (using HSL distance)
+  const groups = [];
+  const used = new Set();
+  
+  swatches.forEach(swatch => {
+    if (used.has(swatch.dataset.color)) return;
+    
+    const currentHsl = hexToHsl(swatch.dataset.color);
+    const group = [swatch];
+    used.add(swatch.dataset.color);
+    
+    // Find similar colors
+    swatches.forEach(otherSwatch => {
+      if (used.has(otherSwatch.dataset.color)) return;
+      
+      const otherHsl = hexToHsl(otherSwatch.dataset.color);
+      const distance = Math.sqrt(
+        Math.pow(currentHsl[0] - otherHsl[0], 2) * 0.5 +
+        Math.pow(currentHsl[1] - otherHsl[1], 2) * 0.3 +
+        Math.pow(currentHsl[2] - otherHsl[2], 2) * 0.2
+      );
+      
+      if (distance < 25) {
+        group.push(otherSwatch);
+        used.add(otherSwatch.dataset.color);
+      }
+    });
+    
+    groups.push(group);
+  });
+  
+  // Sort groups by average hue
+  groups.sort((a, b) => {
+    const avgHueA = a.reduce((sum, swatch) => sum + hexToHsl(swatch.dataset.color)[0], 0) / a.length;
+    const avgHueB = b.reduce((sum, swatch) => sum + hexToHsl(swatch.dataset.color)[0], 0) / b.length;
+    return avgHueA - avgHueB;
+  });
+  
+  // Function to generate group name
+  function generateGroupName(group) {
+    if (group.length === 1) return null;
+    
+    // Calculate average HSL values for the group
+    const avgHsl = group.reduce((acc, swatch) => {
+      const hsl = hexToHsl(swatch.dataset.color);
+      acc[0] += hsl[0];
+      acc[1] += hsl[1];
+      acc[2] += hsl[2];
+      return acc;
+    }, [0, 0, 0]).map(val => val / group.length);
+    
+    const [hue, saturation, lightness] = avgHsl;
+    
+    // Determine base color name
+    let colorName;
+    if (hue >= 0 && hue < 15) colorName = 'Red';
+    else if (hue >= 15 && hue < 45) colorName = 'Orange';
+    else if (hue >= 45 && hue < 75) colorName = 'Yellow';
+    else if (hue >= 75 && hue < 150) colorName = 'Green';
+    else if (hue >= 150 && hue < 210) colorName = 'Cyan';
+    else if (hue >= 210 && hue < 270) colorName = 'Blue';
+    else if (hue >= 270 && hue < 330) colorName = 'Purple';
+    else colorName = 'Red';
+    
+    // Add modifiers
+    let modifier = '';
+    
+    // Lightness modifiers
+    if (lightness > 80) modifier += 'Very Light ';
+    else if (lightness > 60) modifier += 'Light ';
+    else if (lightness < 20) modifier += 'Very Dark ';
+    else if (lightness < 40) modifier += 'Dark ';
+    
+    // Handle grays
+    if (saturation < 20) {
+      if (lightness > 80) return 'Very Light Grays';
+      if (lightness > 60) return 'Light Grays';
+      if (lightness < 20) return 'Very Dark Grays';
+      if (lightness < 40) return 'Dark Grays';
+      return 'Neutral Grays';
+    } else if (saturation < 40) {
+      modifier += 'Muted ';
+    } else if (saturation > 80) {
+      modifier += 'Vibrant ';
+    }
+    
+    return modifier + colorName + 's';
+  }
+  
+  // Clear grid and rebuild with group headings (but don't make them links)
+  grid.innerHTML = '';
+  groups.forEach((group, groupIndex) => {
+    const groupName = generateGroupName(group);
+    
+    // Add group heading as display text only (not clickable)
+    if (groupName) {
+      const heading = document.createElement('div');
+      heading.className = 'group-heading';
+      heading.style.cssText = `
+        grid-column: 1 / -1;
+        font-size: 1.2em;
+        font-weight: bold;
+        margin: 1rem 0 0.5rem 0;
+        padding: 0.5rem;
+        background: #f8f9fa;
+        border-left: 4px solid #0066cc;
+        color: #333;
+        display: block;
+      `;
+      heading.textContent = `${groupName} (${group.length} colors)`;
+      
+      grid.appendChild(heading);
+    }
+    
+    // Sort within group by lightness
+    group.sort((a, b) => {
+      const lightnessA = hexToHsl(a.dataset.color)[2];
+      const lightnessB = hexToHsl(b.dataset.color)[2];
+      return lightnessB - lightnessA;
+    });
+    
+    group.forEach((swatch) => {
+      // Clone the swatch to avoid reference issues
+      const swatchClone = swatch.cloneNode(true);
+      
+      if (group.length > 1) {
+        swatchClone.style.border = '2px solid #0066cc';
+        swatchClone.style.borderRadius = '4px';
+      } else {
+        swatchClone.style.border = '1px solid rgba(0,0,0,0.1)';
+        swatchClone.style.borderRadius = '0';
+      }
+      
+      grid.appendChild(swatchClone);
+    });
+    
+    // Add spacing between groups
+    if (groupIndex < groups.length - 1) {
+      const spacer = document.createElement('div');
+      spacer.className = 'group-spacer';
+      spacer.style.cssText = `
+        width: 100%;
+        height: 20px;
+        grid-column: 1 / -1;
+      `;
+      grid.appendChild(spacer);
+    }
+  });
+}
+  </script>
+  
+  <p style="margin-top: 2rem; color: #666;">
+    Total colors: {{ all_colors | size }}
+  </p>
+</div>

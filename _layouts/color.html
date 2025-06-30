@@ -1,0 +1,72 @@
+---
+layout: default
+---
+
+<div style="padding-left: 1.5rem;">
+  <h1>Posts featuring color #{{ page.color }}</h1>
+ </div> 
+
+  <!-- Show the color swatch
+  <div style="
+    width: 50px; 
+    height: 50px; 
+    background-color: #{{ page.color }}; 
+    border: 1px solid rgba(0,0,0,0.1);
+    margin: 1rem 0 2rem 0;
+  "></div> -->
+  
+  <!-- Find and display posts with this color -->
+  {% assign matching_posts = "" | split: "" %}
+  {% for post in site.posts %}
+    {% if post.colors contains page.color %}
+      {% assign matching_posts = matching_posts | push: post %}
+    {% endif %}
+  {% endfor %}
+  
+  {% if matching_posts.size > 0 %}
+    <div class="posts" style="display: flex; flex-wrap: wrap; gap: 1rem;">
+      {% for post in matching_posts %}
+        <a href="{{ post.url | relative_url }}" class="post" style="
+          border: 2px solid rgba(0, 0, 0, .1);
+          box-sizing: border-box;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          text-decoration: none;
+          padding: 2rem;
+          color: inherit;
+          width: 250px;
+          transition: opacity 0.2s ease;
+        " 
+        onmouseover="this.style.opacity='0.8'" 
+        onmouseout="this.style.opacity='1'">
+          <h3 style="margin: 0; text-align: center;">{{ post.title }}</h3>
+          {% if post.date %}
+            <p style="color: #666; font-size: 0.9em; margin: 0.5rem 0 0 0;">{{ post.date | date: "%B %d, %Y" }}</p>
+          {% endif %}
+          
+          <!-- Show the color palette -->
+          {% if post.colors %}
+            <div style="display: flex; gap: 3px; margin-top: 1rem;">
+              {% for color in post.colors %}
+                <div style="
+                  width: 20px; 
+                  height: 20px; 
+                  background-color: #{{ color }};
+                  {% if color == page.color %}border: 2px solid #000;{% else %}border: 1px solid rgba(0,0,0,0.2);{% endif %}
+                "></div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </a>
+      {% endfor %}
+  {% else %}
+    <p>No posts found with this color.</p>
+  {% endif %}
+</div>
+<div style="padding-left: 1.5rem;">  
+  <p style="margin-top: 2rem; color: #666;">
+    <a href="/browse-by-color/" style="margin-bottom: 2rem; display: inline-block;">&larr; Back to Browse by Color</a>
+  </p>
+</div>

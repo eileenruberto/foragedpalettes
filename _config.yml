@@ -1,0 +1,71 @@
+# Site settings
+title: Foraged Palettes
+description: Color palettes harvested in the urban wilds of western new york and beyond
+url: "https://foragedpalettes.com"
+baseurl: ""
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-paginate
+
+# Pagination
+paginate: 20
+paginate_path: "/page/:num/"
+
+# Custom settings (from your Blot package.json)
+navigation_alignment: left
+navigation_position: left
+thumbnail_size: 200
+spacing: 1.5
+body_width: 100
+navigation_width: 150
+
+# Navigation menu
+navigation:
+  - title: Color
+    url: /by-color
+  - title: Plants
+    url: /tag/plants
+  - title: Animals
+    url: /tag/animals
+  - title: Buildings
+    url: /tag/buildings
+  - title: People
+    url: /tag/people
+
+# Collections
+collections:
+#  posts:
+#    output: true
+#    permalink: /:title/
+  tags:
+    output: true
+    permalink: /tags/:name/
+
+# Exclude from processing
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+
+# Typography
+font_size: 18
+line_height: 1.6
+body_font_stack: 'system-ui, -apple-system, sans-serif'
+code_font_family: '"DM Mono", monospace'
+code_font_size: 15
+
+# Colors
+background_color: '#FFFFFF'
+text_color: '#000000'
+navigation_link_color: '#666666'
+text_link_color: '#0066cc'
+text_link_visited_color: '#551a8b'
+text_color_hover: 'rgba(0, 0, 0, 0.5)'
+
+# Remove minima theme if it's there
+theme: null

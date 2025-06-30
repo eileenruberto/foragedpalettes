@@ -1,0 +1,126 @@
+---
+layout: default
+---
+
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{{ page.title }} - Color Category</title>
+  <style>
+    .color-swatch {
+      width: 30px;
+      height: 30px;
+      border: 1px solid rgba(0,0,0,0.1);
+      display: inline-block;
+      margin-right: 5px;
+    }
+    .post-card {
+      border: 2px solid rgba(0, 0, 0, .1);
+      box-sizing: border-box;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-decoration: none;
+      padding: 2rem;
+      color: inherit;
+      width: 250px;
+      transition: opacity 0.2s ease;
+    }
+    .post-card:hover {
+      opacity: 0.8;
+    }
+    .posts-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .color-palette {
+      display: flex;
+      gap: 3px;
+      margin-top: 1rem;
+    }
+    .palette-color {
+      width: 20px;
+      height: 20px;
+    }
+    .category-color {
+      border: 2px solid #000;
+    }
+    .other-color {
+      border: 1px solid rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div style="padding: 1.5rem;">
+    <h1>{{ page.title }}</h1>
+    <p>Explore all posts featuring {{ page.title | downcase }} in their color palettes.</p>
+    
+    <!-- Show representative color swatches -->
+    <div style="margin: 1rem 0 2rem 0;">
+      <h3>Colors in this category:</h3>
+      <div>
+        {% for color in page.colors %}
+          <div class="color-swatch" style="background-color: #{{ color }};" title="#{{ color }}"></div>
+        {% endfor %}
+      </div>
+    </div>
+    
+    <a href="/by-color/" style="margin-bottom: 2rem; display: inline-block;">&larr; Back to Browse by Color</a>
+    
+    <!-- Find and display posts with colors in this category -->
+    {% assign matching_posts = "" | split: "" %}
+    {% for post in site.posts %}
+      {% if post.colors %}
+        {% assign has_category_color = false %}
+        {% for post_color in post.colors %}
+          {% if page.colors contains post_color %}
+            {% assign has_category_color = true %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+        {% if has_category_color %}
+          {% assign matching_posts = matching_posts | push: post %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+    
+    {% if matching_posts.size > 0 %}
+      <div class="posts-grid">
+        {% for post in matching_posts %}
+          <a href="{{ post.url | relative_url }}" class="post-card">
+            <h3 style="margin: 0; text-align: center;">{{ post.title }}</h3>
+            {% if post.date %}
+              <p style="color: #666; font-size: 0.9em; margin: 0.5rem 0 0 0;">{{ post.date | date: "%B %d, %Y" }}</p>
+            {% endif %}
+            
+            <!-- Show the color palette with category colors highlighted -->
+            {% if post.colors %}
+              <div class="color-palette">
+                {% for color in post.colors %}
+                  <div class="palette-color {% if page.colors contains color %}category-color{% else %}other-color{% endif %}" 
+                       style="background-color: #{{ color }};" 
+                       title="#{{ color }}"></div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </a>
+        {% endfor %}
+      </div>
+    {% else %}
+      <p>No posts found with colors in this category.</p>
+    {% endif %}
+    
+    <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid #eee;">
+      <p style="color: #666;">
+        Found {{ matching_posts.size }} post{% if matching_posts.size != 1 %}s{% endif %} with {{ page.title | downcase }}.
+      </p>
+      <p style="color: #666; font-size: 0.9em;">
+        This category contains {{ page.colors.size }} colors.
+      </p>
+    </div>
+  </div>
+</body>
+</html>

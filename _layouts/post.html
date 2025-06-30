@@ -1,0 +1,90 @@
+---
+layout: default
+---
+
+<div class="entry align-{{ site.navigation_alignment | default: 'left' }}">
+  <div class="contents">
+
+
+<!-- Color palette display (70x50 images) -->
+<p>
+{% for color in page.colors -%}
+<img src="https://singlecolorimage.com/get/{{ color }}/70x50" alt="{{ color }}">
+{%- endfor %}
+</p>
+
+<!-- Main image -->
+<p><img src="{{ page.image }}" alt="{{ page.title }}"></p>
+
+<!-- Title and location -->
+<!--<p>{{ page.title }}<br>    
+{{ page.location }}{% if page.location contains 'Buffalo' %}, NY{% endif %}<br>  
+{{ page.date | date: "%B %Y" }}</p>-->
+
+<!-- Post content -->
+{{ content }}
+
+<hr>
+
+<!-- Color palette with hex codes (12x12 images) -->
+<p>
+{% for color in page.colors -%}
+<img src="https://singlecolorimage.com/get/{{ color }}/12x12" alt="{{ color }}"> <code>{{ color }}</code>{% unless forloop.last %} 
+&nbsp; {% endunless %}
+{%- endfor %}
+</p>
+    
+    {% if page.enable_navigation != false %}
+    <script type="text/javascript">
+      document.onkeydown = checkKey;
+      
+      function checkKey(e) {
+        e = e || window.event;
+        
+        {% if page.next %}
+        var nextURL = "{{ page.next.url | relative_url }}";
+        {% endif %}
+        {% if page.previous %}
+        var previousURL = "{{ page.previous.url | relative_url }}";
+        {% endif %}
+        
+        if (typeof previousURL !== 'undefined' && e.keyCode == '39') {
+          window.location = previousURL
+        }
+        
+        if (typeof nextURL !== 'undefined' && e.keyCode == '37') {
+          window.location = nextURL
+        }
+      }
+    </script>
+    {% endif %}
+  </div>
+  
+  <div class="nav">
+    <a href="{{ '/' | relative_url }}">
+      <!-- Close icon -->
+    </a>
+    
+    {% unless page.layout == 'page' %}
+      {% if page.next %}
+      <a href="{{ page.next.url | relative_url }}">
+        <svg viewBox="0 0 36 36">
+          <line x1="18" y1="18" x2="26" y2="10"></line>
+          <line x1="18" y1="18" x2="26" y2="26"></line>
+        </svg>
+      </a>
+      {% endif %}
+      <a>&nbsp;</a>
+      
+      {% if page.previous %}
+      <a href="{{ page.previous.url | relative_url }}">
+        <svg viewBox="0 0 36 36">
+          <line x1="10" y1="10" x2="18" y2="18"></line>
+          <line x1="10" y1="26" x2="18" y2="18"></line>
+        </svg>
+      </a>
+      {% endif %}
+      <a>&nbsp;</a>
+    {% endunless %}
+  </div>
+</div>

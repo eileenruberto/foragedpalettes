@@ -1,0 +1,28 @@
+<!-- Navigation -->
+<div class="navigation-container align-{{ site.navigation_alignment | default: 'left' }}">
+  <input type="checkbox" name="toggle" id="toggle">
+  
+  <div class="navigation">
+    <a href="{{ '/' | relative_url }}" class="index-link" style="margin-bottom: 20px;">{{ site.title }}</a>
+    
+    <br>
+ 
+    <div class="menu">
+
+    </div>
+
+    <br>
+    <br>
+
+    <!-- Add this new section -->
+    <div class="menu">
+      <span class="light">Browse by:</span>
+      {% for item in site.navigation %}
+      <a href="{{ item.url | relative_url }}" class="light">{{ item.title }}</a>
+      {% endfor %}
+    </div>
+
+  </div>
+  
+  <label for="toggle">—<br>—<br>—</label>
+</div>
