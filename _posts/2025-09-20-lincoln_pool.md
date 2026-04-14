@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  lincoln pool
+title:  Lincoln Pool
 date: September 20, 2025
 tags: Buildings
 location: 
