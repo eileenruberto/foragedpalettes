@@ -2,7 +2,7 @@
 layout: post
 title:  lincoln pool
 date: September 20, 2025
-tags: 
+tags: Buildings
 location: 
 colors: 
 - "57B6F9"
