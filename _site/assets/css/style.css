@@ -16,7 +16,7 @@ body {
   color: #000000;
   word-wrap: break-word;
   margin: 0 auto;
-  max-width: 80%;
+  max-width: 90%;
   min-height: 100%;
 }
 
@@ -316,7 +316,7 @@ label[for="toggle"] {
 /* When navigation is collapsed into toggle */
 @media screen and (max-width: 800px) {
   .posts {
-    padding: 0 1.35rem;
+    padding: 0 0;
   }
 
   .post {
@@ -538,9 +538,9 @@ code {
 
   /* 1. Reduce padding & spacing */
   .entry .contents {
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    padding-bottom: 0.5rem;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 0;
   }
 
   .entry p {
@@ -564,8 +564,8 @@ code {
     flex: 1 1 0;
     width: 0;       /* flex will size it; prevents any single swatch overflowing */
     max-width: none;
-    max-height: 40px;
-    height: 40px;
+    max-height: 50px;
+    height: 50px;
     object-fit: cover;
   }
 
