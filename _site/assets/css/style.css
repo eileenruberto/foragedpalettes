@@ -578,8 +578,22 @@ code {
     object-fit: contain;
   }
 
-  /* 4. Center prev/next arrows evenly */
+  /* 4. Center prev/next arrows, remove excess bottom space */
   .nav > * {
     padding: 1.5rem;
+  }
+
+  .entry {
+    min-height: unset;
+  }
+
+  .nav {
+    justify-content: center;
+  }
+
+  /* Hide the empty close link and &nbsp; spacers */
+  .nav > a:not([href]),
+  .nav > a:first-child {
+    display: none;
   }
 }
