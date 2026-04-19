@@ -29,7 +29,7 @@ layout: default
 <!-- Color palette with hex codes (12x12 images) -->
 <p>
 {% for color in page.colors -%}
-<img src="https://singlecolorimage.com/get/{{ color }}/12x12" alt="{{ color }}"> <code>{{ color }}</code>{% unless forloop.last %} 
+<img src="https://singlecolorimage.com/get/{{ color }}/12x12" alt="{{ color }}"> <code>#{{ color }}</code>{% unless forloop.last %} 
 &nbsp; {% endunless %}
 {%- endfor %}
 </p>
