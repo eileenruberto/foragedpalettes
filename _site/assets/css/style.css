@@ -577,4 +577,9 @@ code {
     height: auto;
     object-fit: contain;
   }
+
+  /* 4. Center prev/next arrows evenly */
+  .nav > * {
+    padding: 1.5rem;
+  }
 }
