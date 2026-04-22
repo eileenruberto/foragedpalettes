@@ -77,24 +77,28 @@ body.position-left .navigation-container {
   overflow: hidden;
 }
 
+
 .navigation a {
   display: block;
   text-indent: calc(1.5rem * -0.5);
   padding-left: calc(1.5rem * 0.5);
-  color: inherit;
+  color: black;
   text-decoration: none;
   transition: color 0.1s;
 }
 
-.navigation a:hover,
-.navigation a:focus,
 .navigation a.light {
   color: rgba(0, 0, 0, 0.5);
 }
 
-.navigation a.active {
-  color: inherit;
-  font-weight: 500;
+.navigation a.light:hover,
+.navigation a.light:focus {
+  color: black;
+}
+
+.navigation a.light.active {
+  color: black;
+  font-weight: 600;
 }
 
 .clip-7 > :nth-child(n+12) {
@@ -184,9 +188,16 @@ label[for="toggle"] {
   flex-wrap: wrap;
 }
 
+.heading {
+  padding-left: 1.4rem;
+}
+
 @media screen and (max-width: 800px) {
   .pagination {
     padding: 1.3rem 1.35rem;
+  }
+  .heading {
+  padding-left: .6rem;
   }
 }
 
@@ -207,9 +218,8 @@ label[for="toggle"] {
   opacity: 1;
 }
 
-.navigation a.light:hover,
 .pagination a[href]:hover {
-  opacity: 0.85
+  opacity: 0.85;
 }
 
 .pagination a {

@@ -270,7 +270,7 @@
 <loc>http://localhost:4000/tag/buildings</loc>
 </url>
 <url>
-<loc>http://localhost:4000/by-color/</loc>
+<loc>http://localhost:4000/by-color</loc>
 </url>
 <url>
 <loc>http://localhost:4000/colors/</loc>
@@ -285,7 +285,7 @@
 <loc>http://localhost:4000/colors/pinks</loc>
 </url>
 <url>
-<loc>http://localhost:4000/tag/plants/</loc>
+<loc>http://localhost:4000/tag/plants</loc>
 </url>
 <url>
 <loc>http://localhost:4000/color/9FC6F1/</loc>

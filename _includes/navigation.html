@@ -18,7 +18,7 @@
     <div class="menu">
       <span class="light">Browse by:</span>
       {% for item in site.navigation %}
-      <a href="{{ item.url | relative_url }}" class="light">{{ item.title }}</a>
+      <a href="{{ item.url | relative_url }}" class="light {% if page.url == item.url %}active{% endif %}">{{ item.title }}</a>
       {% endfor %}
     </div>
 
