@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Western Mass"
+title: "Western Mass"
 date: September 28, 2023
 tags: 
 location: 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Xoe Dog-Chanel"
+title: "Xoe Dog-Chanel"
 date: August 8, 2020
 tags: Oregon, Animals
 Location: Oregon

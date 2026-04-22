@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Whirlpool State Park"
+title: "Whirlpool State Park"
 date: February 10, 2024
 tags: Nature, People
 location: Niagara Falls

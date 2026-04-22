@@ -193,10 +193,13 @@ label[for="toggle"] {
 }
 
 @media screen and (max-width: 800px) {
-  .pagination {
-    padding: 1.3rem 1.35rem;
+
+.pagination {
+    padding: .6rem .6rem;
+    font-size: 0.85rem;
   }
-  .heading {
+
+.heading {
   padding-left: .6rem;
   }
 }
@@ -233,7 +236,7 @@ label[for="toggle"] {
 
 .pagination a+a {
   margin-left: 1.3em;
-  margin-right: 2.6rem
+  margin-right: 0.9rem;
 }
 
 .pre-loaded {
@@ -463,6 +466,11 @@ body.position-right .nav:last-of-type > a:first-of-type {
   stroke: #000000;
   stroke-width: calc(18px * 0.14);
   stroke-linecap: square;
+}
+
+.last-updated {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 0.85rem;
 }
 
 @media screen and (max-width: 800px) {

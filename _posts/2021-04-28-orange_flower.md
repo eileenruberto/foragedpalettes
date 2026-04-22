@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Orange Flower"
+title: "Orange Flower"
 date: April 28, 2021
 tags: Portland, Oregon, Plants
 location: Portland

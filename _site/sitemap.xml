@@ -279,6 +279,9 @@
 <loc>http://localhost:4000/</loc>
 </url>
 <url>
+<loc>http://localhost:4000/tag/interiors</loc>
+</url>
+<url>
 <loc>http://localhost:4000/tag/people</loc>
 </url>
 <url>

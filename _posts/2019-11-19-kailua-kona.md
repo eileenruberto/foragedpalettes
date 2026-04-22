@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Kailua-Kona"
+title: "Kailua-Kona"
 date: November 19, 2019
 tags: Hawaii, Buildings
 location: Hawaii

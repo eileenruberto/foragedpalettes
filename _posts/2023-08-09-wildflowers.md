@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Wildflowers"
+title: "Wildflowers"
 date: August 9, 2023
 tags: Buffalo, Plants, Nature
 location: Buffalo

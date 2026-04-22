@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Gifts Restaurant"
+title: "Gifts Restaurant"
 date: November 7, 2021
 tags: New Mexico, Buildings
 location: New Mexico

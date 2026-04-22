@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Washington State Ferry Crew"
+title: "Washington State Ferry Crew"
 date: March 26, 2019
 tags: Washington, People
 location: Washington

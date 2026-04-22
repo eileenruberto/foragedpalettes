@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Sidewalk chalk"
+title: "Sidewalk chalk"
 date: June 18, 2022
 tags: Buffalo
 location: Buffalo

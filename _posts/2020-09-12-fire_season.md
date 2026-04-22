@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Fire Season"
+title: "Fire Season"
 date: September 12, 2020
 tags: 
 location: Oregon

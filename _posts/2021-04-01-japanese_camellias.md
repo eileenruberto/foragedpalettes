@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Japanese Camellias"
+title: "Japanese Camellias"
 date: April 1, 2021
 tags: Portland, Plants
 location: Portland

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "James Baldwin"
+title: "James Baldwin"
 date: Feb 8, 2021
 tags: People
 location: 

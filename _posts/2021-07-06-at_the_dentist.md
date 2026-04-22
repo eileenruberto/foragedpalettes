@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "At the Dentist"
+title: "At the Dentist"
 date: July 6, 2021
-tags: Portland, Oregon, People
+tags: People, Interiors
 location: Portland
 colors: 
 - "479E7D"

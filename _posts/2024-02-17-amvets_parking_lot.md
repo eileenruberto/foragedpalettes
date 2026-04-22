@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Amvets Parking Lot"
+title: "Amvets Parking Lot"
 date: February 17, 2024
 tags: Buffalo, Buildings
 location: Buffalo

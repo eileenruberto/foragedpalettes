@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Tool bits
-date:  2023-09-23
+date: 2023-09-23
 tags: buffalo
 location: Buffalo
 colors: 

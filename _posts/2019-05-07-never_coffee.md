@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Never Coffee"
+title: "Never Coffee"
 date: May 7, 2019
 tags: Portland, Oregon, Interiors
 location: Portland

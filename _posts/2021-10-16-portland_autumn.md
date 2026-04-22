@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Portland autumn"
+title: "Portland autumn"
 date: October 16, 2021
 tags: Portland, Oregon, Buildings, Plants
 location: Portland

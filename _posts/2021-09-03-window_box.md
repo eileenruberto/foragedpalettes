@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Window Box
+title: Window Box
 date: September 3, 2021
 tags: Plants
 location:

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Top Drawer Thrift
+title: Top Drawer Thrift
 date: 2021-11-11
 tags: Buildings
 location: "Austin, TX"

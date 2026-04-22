@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Hickory Urban Sanctuary"
+title: "Hickory Urban Sanctuary"
 date: July 16, 2022
 tags: Buffalo, Buildings, Plants
 location: Buffalo

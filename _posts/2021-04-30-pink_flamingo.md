@@ -2,7 +2,7 @@
 layout: post
 title: "Pink Flamingo in Spring"
 date: April 30, 2021
-tags: Portland, Oregon
+tags: Plants
 location: Portland
 colors: 
 - "EC67A1"

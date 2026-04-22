@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Magic hour"
+title: "Magic hour"
 date: June 6, 2023
 tags: Buffalo, Plants
 location: Buffalo

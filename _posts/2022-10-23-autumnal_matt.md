@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Autumn Matt"
+title: "Autumn Matt"
 date: October 23, 2022
-tags: 
+tags: People, Nature
 location: 
 colors: 
 - "E1C054"

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "New Orleans"
+title: "New Orleans"
 date: January 19, 2019
 tags: New Orleans, Buildings
 location: New Orleans

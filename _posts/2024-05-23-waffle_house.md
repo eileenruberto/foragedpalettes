@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Waffle House"
+title: "Waffle House"
 date: May 23, 2024
 tags: Ohio, Buildings
 location: Ohio

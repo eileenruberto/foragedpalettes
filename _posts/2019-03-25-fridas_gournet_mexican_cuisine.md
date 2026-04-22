@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Frida's Gourmet Mexican Cuisine"
+title: "Frida's Gourmet Mexican Cuisine"
 date: March 25, 2019
 tags: Washington, Interiors
 location: Washington

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Carousel Bar"
+title: "Carousel Bar"
 date: February 26, 2022
 tags: Austin, Buildings
 location: Austin

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Car in autumn"
+title: "Car in autumn"
 date: October 22, 2021
 tags: Portland, Oregon, Cars
 location: Portland

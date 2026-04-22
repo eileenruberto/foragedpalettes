@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Found Flower"
+title: "Found Flower"
 date: March 9, 2019
 tags: Portland, Oregon, Plants
 location: Portland

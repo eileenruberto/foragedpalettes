@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  Temple Bar
+title: Temple Bar
 date: August 13, 2025
 tags: People
 location: Dublin

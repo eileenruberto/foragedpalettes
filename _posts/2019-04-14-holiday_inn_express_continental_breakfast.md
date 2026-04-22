@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Holiday Inn Express Continental Breakfast"
+title: "Holiday Inn Express Continental Breakfast"
 date: April 14, 2019
 tags: Ohio, Food
 location: Ohio

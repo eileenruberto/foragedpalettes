@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "Church kitchen"
+title: "Church kitchen"
 date: September 5, 2024
-tags: Buffalo
+tags: Interiors
 location: Buffalo
 colornames: Yellows, Browns, Blues, Pinks
 colors: 

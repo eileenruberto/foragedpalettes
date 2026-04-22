@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Dusk"
+title: "Dusk"
 date: June 30, 2019
 tags: Oregon, Nature
 location: Oregon
