@@ -4,6 +4,7 @@ title:  Temple Bar
 date: August 13, 2025
 tags: People
 location: Dublin
+colornames: Reds, Pinks, Greens, Yellows, Grays
 colors: 
 - "A82216"
 - "C27EA5"

@@ -1,0 +1,43 @@
+---
+layout: default
+title: Colors
+permalink: /colors/
+---
+
+{% assign colorlist = "Reds,Oranges,Browns,Yellows,Greens,Blues,Purples,Pinks,Grays,Turquoises" | split: "," %}
+
+{% for color in colorlist %}
+
+{% assign matching_posts = site.posts | where_exp: "post", "post.colornames contains color" %}
+
+{% if matching_posts.size > 0 %}
+<h2>{{ color }}</h2>
+
+<div class="posts">
+{% for post in matching_posts limit: 3 %}
+  {% if post.thumbnail %}
+  <a class="post photo" href="{{ post.url | relative_url }}" style="
+    max-width:{{ post.image_width | default: 400 }};
+    max-height:{{ post.image_height | default: 400 }};
+    width:calc({{ post.image_width | default: 400 }}px*{{ site.thumbnail_size | default: 400 }}/{{ post.image_height | default: 400 }});
+    flex-grow:calc({{ post.image_width | default: 400 }}*{{ site.thumbnail_size | default: 400 }}/{{ post.image_height | default: 400 }})">
+    <i style="padding-bottom:{{ post.image_ratio | default: '100%' }}"></i>
+    <img src="{{ post.thumbnail | relative_url }}" class="pre-loaded" onload="this.className+=' loaded';" />
+    <noscript><img src="{{ post.thumbnail | relative_url }}"></noscript>
+    {% if site.show_title %}
+    <span class="title">{{ post.title }}</span>
+    {% endif %}
+  </a>
+  {% else %}
+  <a class="post text" href="{{ post.url | relative_url }}" style="flex-grow:{{ site.thumbnail_size | default: 400 }}">
+    <span class="title">{{ post.title }}</span>
+    <span class="date">{{ post.date | date: "%B %d, %Y" }}</span>
+  </a>
+  {% endif %}
+{% endfor %}
+</div>
+
+<a href="{{ '/colors/' | append: color | downcase | relative_url }}">View all {{ color | downcase }} →</a>
+
+{% endif %}
+{% endfor %}

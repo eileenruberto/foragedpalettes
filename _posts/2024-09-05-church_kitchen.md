@@ -4,6 +4,7 @@ title:  "Church kitchen"
 date: September 5, 2024
 tags: Buffalo
 location: Buffalo
+colornames: Yellows, Browns, Blues, Pinks
 colors: 
 - "D5BE3E"
 - "B5864C"

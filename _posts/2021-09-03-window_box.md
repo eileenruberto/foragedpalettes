@@ -3,7 +3,8 @@ layout: post
 title:  Window Box
 date: September 3, 2021
 tags: Plants
-location: 
+location:
+color-names: Greens, Blues, Yellows, Pinks 
 colors: 
 - "394939"
 - "7C85B7"

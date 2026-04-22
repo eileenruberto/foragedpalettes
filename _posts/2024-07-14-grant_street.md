@@ -4,6 +4,7 @@ title:  "Grant Street"
 date: July 14, 2024
 tags: Buffalo, Buildings, Animals, People
 location: Buffalo
+colornames: Reds, Browns, Whites, Blues
 colors: 
 - "CC2B1E"
 - "A59D87"

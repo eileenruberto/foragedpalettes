@@ -4,6 +4,7 @@ title:  "Water lilies"
 date: September 2, 2024
 tags: Nature, Plants
 location: Depew
+colornames: Blues, Pinks, Purples, Browns, Whites
 colors: 
 - "102F4E"
 - "EF8BD1"

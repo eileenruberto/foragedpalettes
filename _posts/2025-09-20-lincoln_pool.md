@@ -4,6 +4,7 @@ title:  Lincoln Pool
 date: September 20, 2025
 tags: Buildings
 location: 
+colornames: Blues, Greens, Whites
 colors: 
 - "57B6F9"
 - "85B0A2"
