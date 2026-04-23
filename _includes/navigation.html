@@ -20,6 +20,10 @@
       {% for item in site.navigation %}
       <a href="{{ item.url | relative_url }}" class="light {% if page.url == item.url %}active{% endif %}">{{ item.title }}</a>
       {% endfor %}
+
+      <div style="flex-grow: 1"></div>
+      <hr>
+      <a href="/about">About</a>
     </div>
 
   </div>

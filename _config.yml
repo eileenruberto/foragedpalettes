@@ -34,6 +34,8 @@ navigation:
     url: /tag/animals
   - title: Buildings
     url: /tag/buildings
+  - title: Interiors
+    url: /tag/interiors
   - title: People
     url: /tag/people
 

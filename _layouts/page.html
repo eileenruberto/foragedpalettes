@@ -3,7 +3,14 @@ layout: default
 ---
 
 <div class="row">
-  <div class="col-md-8 mb-5">
+  <div class="contents entry">
     {{ content }}
   </div>
 </div>
+
+<script>
+  document.querySelectorAll('a[href^="http"]').forEach(a => {
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+  });
+</script>

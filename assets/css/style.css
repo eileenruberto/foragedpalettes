@@ -20,6 +20,26 @@ body {
   min-height: 100%;
 }
 
+/* Page layout */
+.row {
+  padding: 1.5rem;
+}
+
+.row .contents {
+  max-width: 600px;
+}
+
+.row .contents h2 {
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 2em;
+  margin-bottom: 0.25em;
+}
+
+.row .contents p {
+  margin: 0.65em 0;
+}
+
 /* Navigation */
 
 .navigation-container {
@@ -77,7 +97,6 @@ body.position-left .navigation-container {
   overflow: hidden;
 }
 
-
 .navigation a {
   display: block;
   text-indent: calc(1.5rem * -0.5);
@@ -107,6 +126,13 @@ body.position-left .navigation-container {
 
 .clip-5 > :nth-child(n+6) {
   display: none;
+}
+
+.navigation hr {
+  border: none;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  width: 70%;
+  margin: 1.2rem 0;
 }
 
 /* Hide RSS and search links on portfolio theme */
@@ -284,6 +310,10 @@ label[for="toggle"] {
   display: flex;
   flex-wrap: wrap;
   padding: calc(1.5rem * 2 / 3);
+}
+
+.post.photo {
+  max-width: 600px !important;
 }
 
 .post {
